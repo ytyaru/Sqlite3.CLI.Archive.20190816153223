@@ -69,3 +69,8 @@ cat ./D/DD/DDD.txt
 # 圧縮されてないのでは？
 sqlite3 :memory: "select sqlar_compress('AAA');"
 
+# アーカイブから削除
+sqlite3 texts ".headers on" "select * from sqlar;";
+sqlite3 texts "delete from sqlar where name='A.txt'";
+sqlite3 texts ".headers on" "select * from sqlar;";
+
