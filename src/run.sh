@@ -74,3 +74,11 @@ sqlite3 texts ".headers on" "select * from sqlar;";
 sqlite3 texts "delete from sqlar where name='A.txt'";
 sqlite3 texts ".headers on" "select * from sqlar;";
 
+# ディレクトリ削除（再帰的な削除はされない）
+sqlite3 texts "delete from sqlar where name='D'";
+sqlite3 texts ".headers on" "select * from sqlar;";
+# 親のレコードがなくても展開される
+rm -rf A.txt B.txt C.txt D
+sqlite3 texts -Ax
+find .
+
